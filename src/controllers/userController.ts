@@ -64,3 +64,28 @@ export const updateUserById = async (req: Request, res: Response) => {
 
   return res.status(200).json(results.rows[0]).send();
 };
+
+export const deleteUserById = async (req: Request, res: Response) => {
+  const userId = req.params.id;
+
+  if (req.user?.role !== "Admin" || req.user?.userId === parseInt(userId)) {
+    return res
+      .status(403)
+      .json({
+        error: "Forbidden",
+        message: "User not permitted to access resource",
+      })
+      .send();
+  }
+
+  const results = await pool.query(
+    "DELETE FROM users WHERE id = $1 RETURNING id",
+    [userId],
+  );
+
+  if (results.rows.length === 0) {
+    return res.status(404).json({ error: "User not found" }).send();
+  }
+
+  return res.status(200).json({ message: "User deleted successfully" }).send();
+};
