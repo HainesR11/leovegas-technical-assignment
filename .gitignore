@@ -1,0 +1,10 @@
+node_modules/
+yarn.lock
+lib/
+
+#Env files
+.env
+dev.env
+test.env
+prod.env
+firebaseEnv.json
