@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node16",
+    "module": "node16",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "declaration": false,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2018",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "outDir": "./lib",
+    "rootDir": "./"
+  },
+  "files": ["src/types/index.d.ts"],
+  "include": ["src", "src/tests"],
+  "compileOnSave": true
+}
