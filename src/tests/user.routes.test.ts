@@ -216,4 +216,51 @@ describe("User Routes - /api/v1/users", () => {
       expect(res.status).toBe(404);
     });
   });
+
+  describe("DELETE /:id", () => {
+    it("should delete user by id for admin", async () => {
+      const adminToken = jwt.sign(
+        { userId: 2, role: "Admin" },
+        "default_secret",
+      );
+      pool.query.mockResolvedValue({ rows: [{ id: 1 }] });
+
+      const res = await request(app)
+        .delete("/api/v1/users/1")
+        .set("x-auth-token", adminToken);
+
+      expect(res.status).toBe(200);
+    });
+
+    it("should return 403 if user tries to delete themselves", async () => {
+      const res = await request(app)
+        .delete("/api/v1/users/1")
+        .set("x-auth-token", token);
+
+      expect(res.status).toBe(403);
+    });
+
+    it("should return 403 if user tries to delete another user's data", async () => {
+      const res = await request(app)
+        .delete("/api/v1/users/2")
+        .set("x-auth-token", token);
+
+      expect(res.status).toBe(403);
+    });
+
+    it("should return 404 if user not found", async () => {
+      const adminToken = jwt.sign(
+        { userId: mockUser.id, role: "Admin" },
+        "default_secret",
+      );
+
+      pool.query.mockResolvedValue({ rows: [] });
+
+      const res = await request(app)
+        .delete("/api/v1/users/999")
+        .set("x-auth-token", adminToken);
+
+      expect(res.status).toBe(404);
+    });
+  });
 });
