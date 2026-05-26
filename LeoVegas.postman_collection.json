@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "6b4da0e6-1705-4900-aa89-a4e00b0c9ef6",
+    "name": "LeoVegas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17830990",
+    "_collection_link": "https://go.postman.co/collection/17830990-6b4da0e6-1705-4900-aa89-a4e00b0c9ef6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get User",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-admin}}",
+            "description": "valid token - admin",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-invalid}}",
+            "description": "invalid token",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-user}}",
+            "description": "valid token - user",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "localhost:3000/api/v1/users",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"cbrettor0@usda.gov\", // Role - User\n    \"password\": \"zD4}Q=eLqjA\"\n    // \"email\": \"otomczynski7@dropbox.com\", // Role - Admin\n    // \"password\": \"kG0_v%d#Mh\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/api/v1/auth/login",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update User",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-admin}}",
+            "description": "valid token - admin",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-invalid}}",
+            "description": "invalid token",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-user}}",
+            "description": "valid token - user",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Terry\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/api/v1/users/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-admin}}",
+            "description": "valid token - admin",
+            "type": "text"
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-invalid}}",
+            "description": "invalid token",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-user}}",
+            "description": "valid token - user",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\n    \"name\": \"Carol Brettor\",\n    \"email\": \"cbrettor0@usda.gov\",\n    \"password\": \"zD4}Q=eLqjA\",\n    \"role\": \"User\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:3000/api/v1/users/30",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "users",
+            "30"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-admin}}",
+            "description": "valid token - admin",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-invalid}}",
+            "description": "invalid token",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "x-auth-token",
+            "value": "{{x-auth-token-user}}",
+            "description": "valid token - user",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "localhost:3000/api/v1/users",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "x-auth-token-admin",
+      "value": ""
+    },
+    {
+      "key": "x-auth-token-user",
+      "value": ""
+    },
+    {
+      "key": "x-auth-token-invalid",
+      "value": ""
+    }
+  ]
+}
